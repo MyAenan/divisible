@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="images/image-1.png" alt="" class="image-1">
+				<form action="">
+					<h3>Divisible Number with Iteration</h3>
+                    <div style="color:#333; font-weight:bold;">
+                    Divisible By:
+                    </div>
+					<div class="form-holder">
+						<span class="lnr lnr-eye"></span>
+						<input type="number" class="form-control" id = "div" placeholder="0">
+					</div>
+                    
+                    <div style="color:#333; font-weight:bold;">
+                    Your Number:
+                    </div>
+					<div class="form-holder">
+						<span class="lnr lnr-keyboard"></span>
+						<input type="number" class="form-control" id ="num"  placeholder="0" onchange="myFunction()">
+					</div>
+				
+                <h4 id="answer">Answer</h4>	
+				<p id="demo" style="text-align:justify; color:#666; display:none;"></p>
+                
+				</form>
+				<img src="images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+        
+        <script>
+function myFunction() {
+  var ans = 0;
+  var text = "";
+
+  var num = document.getElementById("num").value;
+  var div = document.getElementById("div").value;
+  var mod = (Number(num) + Number(div)) % Number(div);
+
+  ans = (mod == 0) ? num : (Number(num) + Number(div)) - Number(mod);
+  
+  var init = 0;
+  if (Number(ans) % Number(div) === 0) {
+    text = addToText(text, ans)
+    init = 1;
+  }
+
+  for (i = init; i < 10; i++) {
+    ans = Number(ans) + Number(div);
+    text = addToText(text, ans)
+  }
+
+  function addToText(text, ans) {
+    return text + "<div> <span class='lnr lnr-pointer-right'></span>&nbsp;&nbsp;" + ans + "</div>";
+  }
+  $('#answer, #demo').fadeIn();
+  document.getElementById("demo").innerHTML = text;
+
+}
+		</script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
